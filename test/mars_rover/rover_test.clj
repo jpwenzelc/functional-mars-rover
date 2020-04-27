@@ -8,9 +8,11 @@
            (is (= {:position {:x 0 :y 0} :orientation :north} (execute))))
 
   (testing "that the position is returned"
-           (is (= {:position {:x 0 :y 0} :orientation :north} (execute 0 0 :north))))
+           (is (= {:position {:x 3 :y 5} :orientation :east} (execute 3 5 :east))))
 
   (testing "that returns the position when the execute is the command"
            (is (= {:position {:x 0 :y 1} :orientation :north} (execute "M")))
            (is (= {:position {:x 0 :y 2} :orientation :north} (execute "MM")))
+           (is (= {:position {:x 0 :y 6} :orientation :north} (execute "MMMMMM")))
+           (is (= {:position {:x 3 :y 6} :orientation :north} (execute 3 0 :north "MMMMMM")))
   ))
