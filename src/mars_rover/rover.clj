@@ -1,5 +1,8 @@
 (ns mars-rover.rover
   (:gen-class))
 
-(defn execute [x y orientation]
-  (hash-map :position (hash-map :x x :y y) :orientation orientation))
+(defn execute
+  ([]
+   (execute 0 0 :north))
+  ([x y orientation]
+   (hash-map :position (hash-map :x x :y y) :orientation orientation)))

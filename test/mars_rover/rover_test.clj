@@ -4,5 +4,8 @@
     [mars-rover.rover :refer :all]))
 
 (deftest rover-tests
+  (testing "that it has 0 0 :north as the default position"
+           (is (= {:position {:x 0 :y 0} :orientation :north} (execute))))
+
   (testing "that the position is returned"
            (is (= {:position {:x 0 :y 0} :orientation :north} (execute 0 0 :north)))))
