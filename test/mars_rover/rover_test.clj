@@ -8,4 +8,7 @@
            (is (= {:position {:x 0 :y 0} :orientation :north} (execute))))
 
   (testing "that the position is returned"
-           (is (= {:position {:x 0 :y 0} :orientation :north} (execute 0 0 :north)))))
+           (is (= {:position {:x 0 :y 0} :orientation :north} (execute 0 0 :north))))
+
+  (testing "that returns the position when the execute is M"
+           (is (= {:position {:x 0 :y 1} :orientation :north} (execute "M")))))
