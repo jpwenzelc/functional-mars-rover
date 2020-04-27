@@ -1,19 +1,18 @@
 (ns mars-rover.rover
-  (:gen-class))
+  (:gen-class)
+  (:require [clojure.string :refer :all :as str]))
 
 (defn execute
   ([]
-   "executes no command which will always return the initial default value"
-   (execute ""))
+    (execute ""))
   ([command]
-   "executes the command on the default rover (0 0 North)"
-   (execute 0 0 :north command))
+    (execute 0 0 :north command))
   ([x y orientation]
-   "executes no command on a defined rover"
-   (execute x y orientation ""))
-  ([x y orientation command]
-   "executes a command on a defined rover and returns its last position"
-   (let [rover (hash-map :position (hash-map :x x :y y) :orientation orientation)]
-     (if (= "M" command)
-       (assoc-in rover [:position :y] (inc (get-in rover [:position :y])))
-       rover))))
+    (execute x y orientation ""))
+  ([x y orientation commands]
+    (let [rover (hash-map :position (hash-map :x x :y y) :orientation orientation)
+          actions (str/split commands #"")]
+      (reduce (fn [new-rover command]
+                (cond
+                  (= "M" command) (assoc-in new-rover [:position :y] (inc (get-in new-rover [:position :y])))
+                  :else new-rover)) rover actions))))
