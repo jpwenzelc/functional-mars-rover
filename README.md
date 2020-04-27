@@ -1,44 +1,15 @@
-# mars-rover
+## Rules
 
-FIXME: description
+- You are given the initial starting point (x,y) of a rover and the direction (N,S,E,W) it is facing.
+- The rover receives a character array of commands.
+- Implement commands that move the rover forward/backward (f,b).
+- Implement commands that turn the rover left/right (l,r).
+- Implement wrapping from one edge of the grid to another. (planets are spheres after all)
+- Implement obstacle detection before each move to a new square. If a given sequence of commands encounters an obstacle, the rover moves up to the last possible point and reports the obstacle.
 
-## Installation
+## Changes
 
-Download from http://example.com/FIXME.
-
-## Usage
-
-FIXME: explanation
-
-    $ java -jar mars-rover-0.1.0-standalone.jar [args]
-
-## Options
-
-FIXME: listing of options this app accepts.
-
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
-
-## License
-
-Copyright © 2020 FIXME
-
-This program and the accompanying materials are made available under the
-terms of the Eclipse Public License 2.0 which is available at
-http://www.eclipse.org/legal/epl-2.0.
-
-This Source Code may also be made available under the following Secondary
-Licenses when the conditions for such availability set forth in the Eclipse
-Public License, v. 2.0 are satisfied: GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or (at your
-option) any later version, with the GNU Classpath Exception which is available
-at https://www.gnu.org/software/classpath/license.html.
+- The set of instructions will be provided from the console
+- Before the rover moves there will be three expected inputs: Size of the world, location and direction of the rover, the full set of commands expected to be carried by the rover. They will be introduced separately
+- Once all the inputs have been provided, the rover will output on the screen the location after it moves
+- If there was an obstacle, the mars rover will output the last position before the obstacle and a text saying an obstacle was found.
