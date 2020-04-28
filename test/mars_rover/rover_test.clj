@@ -15,4 +15,7 @@
            (is (= {:position {:x 0 :y 2} :orientation :north} (execute "MM")))
            (is (= {:position {:x 0 :y 6} :orientation :north} (execute "MMMMMM")))
            (is (= {:position {:x 3 :y 6} :orientation :north} (execute 3 0 :north "MMMMMM")))
+           (is (= {:position {:x 1 :y 0} :orientation :east} (execute 0 0 :east "M")))
+           (is (= {:position {:x -1 :y 0} :orientation :west} (execute 0 0 :west "M")))
+           (is (= {:position {:x 0 :y -1} :orientation :south} (execute 0 0 :south "M")))
   ))

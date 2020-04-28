@@ -4,7 +4,12 @@
 
 (defn- move-forward
   [rover-to-move]
-  (update-in rover-to-move [:position :y] inc))
+  (condp = (get rover-to-move :orientation)
+    :north (update-in rover-to-move [:position :y] inc)
+    :east (update-in rover-to-move [:position :x] inc)
+    :south (update-in rover-to-move [:position :y] dec)
+    :west (update-in rover-to-move [:position :x] dec)))
+
 (defn execute
   ([]
     (execute ""))
