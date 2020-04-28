@@ -22,6 +22,14 @@
     :south (assoc rover-to-turn :orientation :west)
     :west (assoc rover-to-turn :orientation :north)))
 
+(defn- turn-left
+  [rover-to-turn]
+  (condp = (get rover-to-turn :orientation)
+    :north (assoc rover-to-turn :orientation :west)
+    :east (assoc rover-to-turn :orientation :north)
+    :south (assoc rover-to-turn :orientation :east)
+    :west (assoc rover-to-turn :orientation :south)))
+
 (defn execute
   ([]
     (execute ""))
@@ -36,4 +44,5 @@
                 (condp = command
                   "M" (move-forward new-rover)
                   "R" (turn-right new-rover)
+                  "L" (turn-left new-rover)
                   new-rover)) rover actions))))

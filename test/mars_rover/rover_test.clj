@@ -23,5 +23,11 @@
            (is (= {:position {:x 0 :y 0} :orientation :east} (execute "R")))
            (is (= {:position {:x 0 :y 0} :orientation :south} (execute "RR")))
            (is (= {:position {:x 0 :y 0} :orientation :west} (execute "RRR")))
-           (is (= {:position {:x 0 :y 0} :orientation :north} (execute "RRRR")))
-           ))
+           (is (= {:position {:x 0 :y 0} :orientation :north} (execute "RRRR"))))
+
+  (testing "returns the rover new orientation when execute the rotate right string command"
+           (is (= {:position {:x 0 :y 0} :orientation :west} (execute "L")))
+           (is (= {:position {:x 0 :y 0} :orientation :south} (execute "LL")))
+           (is (= {:position {:x 0 :y 0} :orientation :east} (execute "LLL")))
+           (is (= {:position {:x 0 :y 0} :orientation :north} (execute "LLLL"))))
+  )
