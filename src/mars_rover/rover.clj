@@ -30,6 +30,14 @@
     :south (assoc rover-to-turn :orientation :east)
     :west (assoc rover-to-turn :orientation :south)))
 
+(defn- execute-single-command
+  [rover command]
+  (condp = command
+    "M" (move-forward rover)
+    "R" (turn-right rover)
+    "L" (turn-left rover)
+    rover))
+
 (defn execute
   ([]
     (execute ""))
@@ -40,9 +48,4 @@
   ([x y orientation commands]
     (let [rover (generate-rover x y orientation)
           actions (str/split commands #"")]
-      (reduce (fn [new-rover command]
-                (condp = command
-                  "M" (move-forward new-rover)
-                  "R" (turn-right new-rover)
-                  "L" (turn-left new-rover)
-                  new-rover)) rover actions))))
+      (reduce execute-single-command rover actions))))
