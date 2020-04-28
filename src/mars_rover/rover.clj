@@ -2,6 +2,10 @@
   (:gen-class)
   (:require [clojure.string :refer :all :as str]))
 
+(defn- generate-rover
+  [x y orientation]
+  (hash-map :position (hash-map :x x :y y) :orientation orientation))
+
 (defn- move-forward
   [rover-to-move]
   (condp = (get rover-to-move :orientation)
@@ -9,6 +13,10 @@
     :east (update-in rover-to-move [:position :x] inc)
     :south (update-in rover-to-move [:position :y] dec)
     :west (update-in rover-to-move [:position :x] dec)))
+
+(defn- turn-right
+  [rover-to-turn]
+  (assoc rover-to-turn :orientation :east))
 
 (defn execute
   ([]
@@ -18,9 +26,10 @@
   ([x y orientation]
     (execute x y orientation ""))
   ([x y orientation commands]
-    (let [rover (hash-map :position (hash-map :x x :y y) :orientation orientation)
+    (let [rover (generate-rover x y orientation)
           actions (str/split commands #"")]
       (reduce (fn [new-rover command]
                 (condp = command
                   "M" (move-forward new-rover)
+                  "R" (turn-right new-rover)
                   new-rover)) rover actions))))
