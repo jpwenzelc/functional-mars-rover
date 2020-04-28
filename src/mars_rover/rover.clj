@@ -2,6 +2,9 @@
   (:gen-class)
   (:require [clojure.string :refer :all :as str]))
 
+(defn- move-forward
+  [rover-to-move]
+  (update-in rover-to-move [:position :y] inc))
 (defn execute
   ([]
     (execute ""))
@@ -13,6 +16,6 @@
     (let [rover (hash-map :position (hash-map :x x :y y) :orientation orientation)
           actions (str/split commands #"")]
       (reduce (fn [new-rover command]
-                (cond
-                  (= "M" command) (assoc-in new-rover [:position :y] (inc (get-in new-rover [:position :y])))
-                  :else new-rover)) rover actions))))
+                (condp = command
+                  "M" (move-forward new-rover)
+                  new-rover)) rover actions))))
