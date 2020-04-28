@@ -16,7 +16,11 @@
 
 (defn- turn-right
   [rover-to-turn]
-  (assoc rover-to-turn :orientation :east))
+  (condp = (get rover-to-turn :orientation)
+    :north (assoc rover-to-turn :orientation :east)
+    :east (assoc rover-to-turn :orientation :south)
+    :south (assoc rover-to-turn :orientation :west)
+    :west (assoc rover-to-turn :orientation :north)))
 
 (defn execute
   ([]
