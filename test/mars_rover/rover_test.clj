@@ -29,4 +29,7 @@
            (is (= {:position {:x 0 :y 0} :orientation :west} (execute "L")))
            (is (= {:position {:x 0 :y 0} :orientation :south} (execute "LL")))
            (is (= {:position {:x 0 :y 0} :orientation :east} (execute "LLL")))
-           (is (= {:position {:x 0 :y 0} :orientation :north} (execute "LLLL")))))
+           (is (= {:position {:x 0 :y 0} :orientation :north} (execute "LLLL"))))
+
+  (testing "returns the rover final position when given a mixed command string command"
+           (is (= {:position {:x 2 :y 3} :orientation :north} (execute "MMRMMLM")))))
