@@ -3,5 +3,7 @@
   (:require [clojure.core]))
 
 (defn generate-rover
-  [x y orientation]
-  (hash-map :position (hash-map :x x :y y) :orientation orientation))
+  ([]
+    (generate-rover 0 0 :north))
+  ([x y orientation]
+    (hash-map :position (hash-map :x x :y y) :orientation orientation)))

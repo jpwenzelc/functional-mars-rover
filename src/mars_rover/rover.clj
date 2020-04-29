@@ -36,13 +36,7 @@
     rover))
 
 (defn execute
-  ([]
-    (execute ""))
   ([command]
-    (execute 0 0 :north command))
-  ([x y orientation]
-    (execute x y orientation ""))
-  ([x y orientation commands]
-    (let [rover (rg/generate-rover x y orientation)
-          actions (str/split commands #"")]
-      (reduce execute-single-command rover actions))))
+    (execute (generate-rover 0 0 :north) command))
+  ([rover commands]
+   (reduce execute-single-command rover (str/split commands #""))))
