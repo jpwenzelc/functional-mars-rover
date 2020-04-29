@@ -1,10 +1,7 @@
 (ns mars-rover.rover
   (:gen-class)
-  (:require [clojure.string :refer :all :as str]))
-
-(defn- generate-rover
-  [x y orientation]
-  (hash-map :position (hash-map :x x :y y) :orientation orientation))
+  (:require [clojure.string :refer :all :as str]
+            [mars-rover.rover-generator :refer :all :as rg]))
 
 (defn- move-forward
   [rover-to-move]
@@ -46,6 +43,6 @@
   ([x y orientation]
     (execute x y orientation ""))
   ([x y orientation commands]
-    (let [rover (generate-rover x y orientation)
+    (let [rover (rg/generate-rover x y orientation)
           actions (str/split commands #"")]
       (reduce execute-single-command rover actions))))
