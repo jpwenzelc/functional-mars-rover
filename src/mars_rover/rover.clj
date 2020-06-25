@@ -4,7 +4,7 @@
 
 (defn- move-forward
   [rover-to-move]
-  (condp = (get rover-to-move :orientation)
+  (case (get rover-to-move :orientation)
     :north (update-in rover-to-move [:position :y] inc)
     :east (update-in rover-to-move [:position :x] inc)
     :south (update-in rover-to-move [:position :y] dec)
@@ -12,7 +12,7 @@
 
 (defn- turn-right
   [rover-to-turn]
-  (condp = (get rover-to-turn :orientation)
+  (case (get rover-to-turn :orientation)
     :north (assoc rover-to-turn :orientation :east)
     :east (assoc rover-to-turn :orientation :south)
     :south (assoc rover-to-turn :orientation :west)
@@ -20,7 +20,7 @@
 
 (defn- turn-left
   [rover-to-turn]
-  (condp = (get rover-to-turn :orientation)
+  (case (get rover-to-turn :orientation)
     :north (assoc rover-to-turn :orientation :west)
     :east (assoc rover-to-turn :orientation :north)
     :south (assoc rover-to-turn :orientation :east)
@@ -28,7 +28,7 @@
 
 (defn- execute-single-command
   [rover command]
-  (condp = command
+  (case command
     "M" (move-forward rover)
     "R" (turn-right rover)
     "L" (turn-left rover)
