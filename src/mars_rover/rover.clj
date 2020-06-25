@@ -3,28 +3,28 @@
             [mars-rover.rover-generator :refer [generate-rover]]))
 
 (defn- move-forward
-  [rover-to-move]
-  (case (rover-to-move :orientation)
-    :north (update-in rover-to-move [:position :y] inc)
-    :east (update-in rover-to-move [:position :x] inc)
-    :south (update-in rover-to-move [:position :y] dec)
-    :west (update-in rover-to-move [:position :x] dec)))
+  [rover]
+  (case (rover :orientation)
+    :north (update-in rover [:position :y] inc)
+    :east (update-in rover [:position :x] inc)
+    :south (update-in rover [:position :y] dec)
+    :west (update-in rover [:position :x] dec)))
 
 (defn- turn-right
-  [rover-to-turn]
-  (case (rover-to-turn :orientation)
-    :north (assoc rover-to-turn :orientation :east)
-    :east (assoc rover-to-turn :orientation :south)
-    :south (assoc rover-to-turn :orientation :west)
-    :west (assoc rover-to-turn :orientation :north)))
+  [rover]
+  (case (rover :orientation)
+    :north (assoc rover :orientation :east)
+    :east (assoc rover :orientation :south)
+    :south (assoc rover :orientation :west)
+    :west (assoc rover :orientation :north)))
 
 (defn- turn-left
-  [rover-to-turn]
-  (case (rover-to-turn :orientation)
-    :north (assoc rover-to-turn :orientation :west)
-    :east (assoc rover-to-turn :orientation :north)
-    :south (assoc rover-to-turn :orientation :east)
-    :west (assoc rover-to-turn :orientation :south)))
+  [rover]
+  (case (rover :orientation)
+    :north (assoc rover :orientation :west)
+    :east (assoc rover :orientation :north)
+    :south (assoc rover :orientation :east)
+    :west (assoc rover :orientation :south)))
 
 (defn- execute-single-command
   [rover command]
