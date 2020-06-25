@@ -20,11 +20,11 @@
 
 (defn- turn-left
   [rover]
-  (case (rover :orientation)
-    :north (assoc rover :orientation :west)
-    :east (assoc rover :orientation :north)
-    :south (assoc rover :orientation :east)
-    :west (assoc rover :orientation :south)))
+  (assoc rover :orientation (case (rover :orientation)
+                              :north :west
+                              :west :south
+                              :south :east
+                              :east :north)))
 
 (defn- execute-single-command
   [rover command]
