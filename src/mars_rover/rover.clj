@@ -6,8 +6,8 @@
   [rover]
   (case (rover :orientation)
     :north (update-in rover [:position :y] inc)
-    :east (update-in rover [:position :x] inc)
     :south (update-in rover [:position :y] dec)
+    :east (update-in rover [:position :x] inc)
     :west (update-in rover [:position :x] dec)))
 
 (defn- turn-right
