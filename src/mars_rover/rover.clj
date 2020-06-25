@@ -4,7 +4,7 @@
 
 (defn- move-forward
   [rover-to-move]
-  (case (get rover-to-move :orientation)
+  (case (rover-to-move :orientation)
     :north (update-in rover-to-move [:position :y] inc)
     :east (update-in rover-to-move [:position :x] inc)
     :south (update-in rover-to-move [:position :y] dec)
@@ -12,7 +12,7 @@
 
 (defn- turn-right
   [rover-to-turn]
-  (case (get rover-to-turn :orientation)
+  (case (rover-to-turn :orientation)
     :north (assoc rover-to-turn :orientation :east)
     :east (assoc rover-to-turn :orientation :south)
     :south (assoc rover-to-turn :orientation :west)
@@ -20,7 +20,7 @@
 
 (defn- turn-left
   [rover-to-turn]
-  (case (get rover-to-turn :orientation)
+  (case (rover-to-turn :orientation)
     :north (assoc rover-to-turn :orientation :west)
     :east (assoc rover-to-turn :orientation :north)
     :south (assoc rover-to-turn :orientation :east)
