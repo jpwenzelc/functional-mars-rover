@@ -12,11 +12,11 @@
 
 (defn- turn-right
   [rover]
-  (case (rover :orientation)
-    :north (assoc rover :orientation :east)
-    :east (assoc rover :orientation :south)
-    :south (assoc rover :orientation :west)
-    :west (assoc rover :orientation :north)))
+   (assoc rover :orientation (case (rover :orientation)
+                               :north :east
+                               :east :south
+                               :south :west
+                               :west :north)))
 
 (defn- turn-left
   [rover]
