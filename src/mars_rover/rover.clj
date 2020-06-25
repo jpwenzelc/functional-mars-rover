@@ -29,13 +29,13 @@
 (defn- execute-single-command
   [rover command]
   (case command
-    "M" (move-forward rover)
-    "R" (turn-right rover)
-    "L" (turn-left rover)
+    :M (move-forward rover)
+    :R (turn-right rover)
+    :L (turn-left rover)
     rover))
 
 (defn execute
   ([command]
     (execute (generate-rover 0 0 :north) command))
   ([rover commands]
-   (reduce execute-single-command rover (str/split commands #""))))
+   (reduce execute-single-command rover (map keyword (str/split commands #"")))))
