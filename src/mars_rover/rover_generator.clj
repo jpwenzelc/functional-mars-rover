@@ -1,6 +1,4 @@
-(ns mars-rover.rover-generator
-  (:gen-class)
-  (:require [clojure.core]))
+(ns mars-rover.rover-generator)
 
 (defn generate-rover
   ([]
