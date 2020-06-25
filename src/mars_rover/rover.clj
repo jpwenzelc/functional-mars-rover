@@ -1,7 +1,6 @@
 (ns mars-rover.rover
-  (:gen-class)
-  (:require [clojure.string :refer :all :as str]
-            [mars-rover.rover-generator :refer :all :as rg]))
+  (:require [clojure.string :as str]
+            [mars-rover.rover-generator :refer [generate-rover]]))
 
 (defn- move-forward
   [rover-to-move]
