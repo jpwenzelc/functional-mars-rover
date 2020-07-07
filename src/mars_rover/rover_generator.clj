@@ -4,4 +4,6 @@
   ([]
     (generate-rover 0 0 :north))
   ([x y orientation]
-    {:position {:x x :y y} :orientation orientation}))
+    {:position {:x x
+                :y y}
+     :orientation orientation}))
